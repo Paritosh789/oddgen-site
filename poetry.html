@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bars on Paper — ODD GEN Pages</title>
+<meta name="description" content="An open notebook for verified writers. Verses, poems and hooks from the ODD GEN crew and friends.">
+<meta name="theme-color" content="#0F0E0C">
+<meta property="og:image" content="https://oddgen.in/assets/live-crew.jpg">
+<link rel="canonical" href="https://oddgen.in/poetry.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo-full.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo" aria-label="ODD GEN — home"><span class="mark" aria-hidden="true"><span class="mark-frame"></span><span class="mark-disc"></span></span><span class="wordmark" aria-hidden="true"></span></a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="index.html#songs">Songs</a>
+    <a href="index.html#artists">Artists</a>
+    <a href="index.html#events">Events</a>
+    <a href="poetry.html" aria-current="page">Poetry</a>
+  </nav>
+  <a href="book.html" class="btn btn-accent header-cta">Book ODD GEN</a>
+  <button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</header>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#songs">Songs</a>
+  <a href="index.html#artists">Artists</a>
+  <a href="index.html#events">Events</a>
+  <a href="poetry.html">Poetry</a>
+  <a href="book.html" class="btn btn-accent">Book ODD GEN</a>
+</nav>
+
+<main>
+<section class="page-hero">
+  <div>
+    <div class="eyebrow">ODD GEN Pages</div>
+    <h1>Bars on paper</h1>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+    <p>An open notebook. Anyone can read — only verified writers can publish and edit their own pieces.</p>
+    <!-- Preview switch from the design. Remove once real writer sign-in exists. -->
+    <div class="preview-toggle" role="group" aria-label="Preview as">
+      <span>Preview as</span>
+      <button type="button" data-mode="writer" aria-pressed="true">Verified writer</button>
+      <button type="button" data-mode="guest" aria-pressed="false">Guest</button>
+    </div>
+  </div>
+</section>
+
+<section class="notebook">
+  <!-- LEFT: editor (writer) or apply (guest) -->
+  <div>
+    <div id="editor">
+      <form class="panel" id="piece-form">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="writer">
+            <div class="avatar">[AV]</div>
+            <div><div style="font-size:15px;font-weight:600">[YOUR WRITER NAME]</div><div class="verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Verified writer</div></div>
+          </div>
+          <span id="mode-label" class="mono" style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)">New piece</span>
+        </div>
+        <label class="field" for="pt-title">Title
+          <input id="pt-title" class="input" type="text" placeholder="Name your piece" required>
+        </label>
+        <div class="field">Type
+          <div class="chips" id="kinds">
+            <button type="button" class="chip" aria-pressed="true">Verse</button>
+            <button type="button" class="chip" aria-pressed="false">Poem</button>
+            <button type="button" class="chip" aria-pressed="false">Hook</button>
+            <button type="button" class="chip" aria-pressed="false">Love letter</button>
+          </div>
+        </div>
+        <label class="field" for="pt-body">Your lines
+          <textarea id="pt-body" class="input" style="min-height:300px;font-family:var(--mono);font-size:15px;line-height:1.8" placeholder="Write your bars here. One line per bar." required></textarea>
+        </label>
+        <div style="display:flex;gap:12px">
+          <button type="submit" class="btn btn-accent" id="publish-btn" style="flex-grow:1;height:52px">Publish to the notebook</button>
+          <button type="button" class="btn btn-ghost" id="cancel-btn" style="height:52px;border-color:var(--field-line);display:none">Cancel</button>
+        </div>
+      </form>
+      <p class="note" style="margin-top:20px">You can edit or delete only your own pieces. The crew may feature published work on socials with credit.</p>
+    </div>
+
+    <div id="apply" class="panel" hidden>
+      <div class="icon-btn" style="background:var(--line);color:var(--accent);cursor:default"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+      <h2 style="margin:0;font-family:var(--display);font-weight:400;font-size:44px;line-height:1;text-transform:uppercase">Want to write here?</h2>
+      <p style="margin:0;font-size:16px;line-height:1.55;color:var(--soft)">Publishing is for verified writers. Send us a sample and the crew will review it.</p>
+      <form id="apply-form" style="display:flex;flex-direction:column;gap:14px">
+        <label class="field" for="ap-name">Pen name<input id="ap-name" class="input" type="text" required></label>
+        <label class="field" for="ap-email">Email<input id="ap-email" class="input" type="email" required></label>
+        <label class="field" for="ap-link">Link to your writing (Instagram, SoundCloud, doc)<input id="ap-link" class="input" type="url" placeholder="https://"></label>
+        <button type="submit" class="btn btn-accent" style="height:52px;margin-top:6px">Apply for verification</button>
+      </form>
+      <div class="notice" id="apply-done" hidden>Almost there — send the email that just opened and we'll get back to you within [X] days.</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: feed -->
+  <div>
+    <div class="feed-head"><span>The notebook</span><span id="count">0 pieces</span></div>
+    <div class="feed" id="feed"></div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" style="padding-top:48px">
+  <div class="footer-bottom"><span>© 2026 ODD GEN. All rights reserved.</span><span>Made loud in Mumbai.</span></div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// Notebook state lives in this browser only (localStorage) until there's a backend.
+const STORE = 'oddgen-notebook';
+const ME = '[YOUR WRITER NAME]';
+const seed = [
+  { id: 1, title: '[POEM TITLE]', kind: 'Verse', author: ME, date: '[DATE]', mine: true, body: '[First line of your verse]\n[Second line of your verse]\n[Third line of your verse]\n[Fourth line of your verse]' },
+  { id: 2, title: '[POEM TITLE]', kind: 'Hook', author: '[WRITER NAME]', date: '[DATE]', mine: false, body: '[Hook line one]\n[Hook line two]' },
+  { id: 3, title: '[POEM TITLE]', kind: 'Love letter', author: '[WRITER NAME]', date: '[DATE]', mine: false, body: '[First line]\n[Second line]\n[Third line]' },
+  { id: 4, title: '[POEM TITLE]', kind: 'Poem', author: '[WRITER NAME]', date: '[DATE]', mine: false, body: '[First line]\n[Second line]\n[Third line]\n[Fourth line]' }
+];
+let pieces = seed;
+try { pieces = JSON.parse(localStorage.getItem(STORE)) || seed; } catch (e) {}
+const save = () => { try { localStorage.setItem(STORE, JSON.stringify(pieces)); } catch (e) {} };
+
+let verified = true;
+let editingId = null;
+let kind = 'Verse';
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function setKind(k) {
+  kind = k;
+  document.querySelectorAll('#kinds .chip').forEach((c) => c.setAttribute('aria-pressed', String(c.textContent === k)));
+}
+
+function render() {
+  $('editor').hidden = !verified;
+  $('apply').hidden = verified;
+  document.querySelectorAll('.preview-toggle button').forEach((b) =>
+    b.setAttribute('aria-pressed', String((b.dataset.mode === 'writer') === verified)));
+  $('mode-label').textContent = editingId !== null ? 'Editing' : 'New piece';
+  $('mode-label').style.color = editingId !== null ? 'var(--pink)' : 'var(--muted)';
+  $('publish-btn').textContent = editingId !== null ? 'Save changes' : 'Publish to the notebook';
+  $('cancel-btn').style.display = editingId !== null ? '' : 'none';
+  $('count').textContent = pieces.length + (pieces.length === 1 ? ' piece' : ' pieces');
+  $('feed').innerHTML = pieces.map((p) => `
+    <article class="piece">
+      <div class="paper-meta"><span>${esc(p.kind)}</span><span>${esc(p.date)}</span></div>
+      <h3>${esc(p.title)}</h3>
+      <p class="piece-body">${esc(p.body)}</p>
+      <div class="piece-foot">
+        <div class="piece-author">${esc(p.author)}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8420F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="Verified"><path d="M5 12l5 5L20 7"/></svg></div>
+        ${verified && p.mine ? `<div style="display:flex;gap:6px"><button type="button" class="piece-edit" data-edit="${p.id}">Edit</button><button type="button" class="piece-del" data-del="${p.id}">Delete</button></div>` : ''}
+      </div>
+    </article>`).join('');
+}
+
+function resetDraft() {
+  editingId = null;
+  $('pt-title').value = '';
+  $('pt-body').value = '';
+  setKind('Verse');
+}
+
+$('kinds').addEventListener('click', (e) => { if (e.target.matches('.chip')) setKind(e.target.textContent); });
+
+$('piece-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const title = $('pt-title').value.trim();
+  const body = $('pt-body').value.trim();
+  if (!title || !body) return;
+  if (editingId !== null) {
+    pieces = pieces.map((p) => p.id === editingId ? Object.assign({}, p, { title, body, kind, date: 'Edited just now' }) : p);
+  } else {
+    const id = Math.max(0, ...pieces.map((p) => p.id)) + 1;
+    pieces = [{ id, title, body, kind, author: ME, date: 'Just now', mine: true }].concat(pieces);
+  }
+  save();
+  resetDraft();
+  render();
+});
+
+$('cancel-btn').addEventListener('click', () => { resetDraft(); render(); });
+
+$('feed').addEventListener('click', (e) => {
+  const edit = e.target.closest('[data-edit]');
+  const del = e.target.closest('[data-del]');
+  if (edit) {
+    const p = pieces.find((x) => x.id === Number(edit.dataset.edit));
+    editingId = p.id;
+    $('pt-title').value = p.title;
+    $('pt-body').value = p.body;
+    setKind(p.kind);
+    render();
+    $('pt-title').focus();
+  } else if (del) {
+    const id = Number(del.dataset.del);
+    pieces = pieces.filter((x) => x.id !== id);
+    if (editingId === id) resetDraft();
+    save();
+    render();
+  }
+});
+
+document.querySelectorAll('.preview-toggle button').forEach((b) => b.addEventListener('click', () => {
+  verified = b.dataset.mode === 'writer';
+  if (!verified) resetDraft();
+  render();
+}));
+
+$('apply-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const body = `Pen name: ${$('ap-name').value}\nEmail: ${$('ap-email').value}\nWriting: ${$('ap-link').value}`;
+  location.href = 'mailto:oddgenproductions@gmail.com?subject=' + encodeURIComponent('ODD GEN Pages — writer application') + '&body=' + encodeURIComponent(body);
+  $('apply-form').hidden = true;
+  $('apply-done').hidden = false;
+});
+
+if (location.hash === '#apply') verified = false;
+render();
+</script>
+</body>
+</html>

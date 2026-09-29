@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book ODD GEN — Shows, events &amp; studio</title>
+<meta name="description" content="Book ODD GEN for live shows, college fests, private and brand events, or studio work. Send a request and we'll reply with availability and a quote.">
+<meta name="theme-color" content="#0F0E0C">
+<meta property="og:image" content="https://oddgen.in/assets/live-crew.jpg">
+<link rel="canonical" href="https://oddgen.in/book.html">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo-full.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo" aria-label="ODD GEN — home"><span class="mark" aria-hidden="true"><span class="mark-frame"></span><span class="mark-disc"></span></span><span class="wordmark" aria-hidden="true"></span></a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="index.html#songs">Songs</a>
+    <a href="index.html#artists">Artists</a>
+    <a href="index.html#events">Events</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="book.html" aria-current="page">Book</a>
+  </nav>
+  <a href="#request" class="btn btn-accent header-cta">Send a request</a>
+  <button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</header>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#songs">Songs</a>
+  <a href="index.html#artists">Artists</a>
+  <a href="index.html#events">Events</a>
+  <a href="poetry.html">Poetry</a>
+  <a href="#request" class="btn btn-accent">Send a request</a>
+</nav>
+
+<main>
+<section class="page-hero" style="border-bottom:none">
+  <div>
+    <div class="eyebrow">Book ODD GEN</div>
+    <h1>Bring us<br>to your stage</h1>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+    <p>Festivals, college fests, club nights, private and brand events — or a session in the studio. Tell us what you're planning and we'll come back with availability and a quote.</p>
+    <a href="#request" class="btn btn-accent">Start a booking</a>
+  </div>
+</section>
+
+<div class="photo-band">
+  <figure class="photo"><img src="assets/live-crew.jpg" alt="The ODD GEN crew on stage at Jashn Studios"><figcaption>Full crew · Jashn Studios</figcaption></figure>
+  <figure class="photo"><img src="assets/live-duo.jpg" alt="Two ODD GEN artists trading verses on stage" loading="lazy"></figure>
+</div>
+
+<!-- FORMATS -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">01 — What we do live</div>
+      <h2 class="h-xl">Pick a format</h2>
+    </div>
+    <p class="lede">Not sure what fits? Pick the closest one — we'll shape the set around your crowd.</p>
+  </div>
+  <div class="formats">
+    <div class="format">
+      <div class="format-meta">Festivals · clubs · gigs</div>
+      <div class="format-title">Headline set</div>
+      <div class="format-desc">The full crew. Rap-first setlist — Usool, Bohot Sara Cheeze, Murder of a Free Bird — with a slow-down moment for Ehsaas.</div>
+      <div class="format-meta" style="color:var(--accent)">[SET LENGTH] · Fee on request</div>
+    </div>
+    <div class="format">
+      <div class="format-meta">College fests</div>
+      <div class="format-title">Fest set</div>
+      <div class="format-desc">High-energy, crowd-first set built for a campus that knows the words. Can include a live cypher with your students.</div>
+      <div class="format-meta" style="color:var(--accent)">[SET LENGTH] · Fee on request</div>
+    </div>
+    <div class="format">
+      <div class="format-meta">Private · corporate</div>
+      <div class="format-title">Private event</div>
+      <div class="format-desc">Weddings, launches, parties and office nights. Setlist agreed with you up front — rap, love songs, or both.</div>
+      <div class="format-meta" style="color:var(--accent)">[SET LENGTH] · Fee on request</div>
+    </div>
+    <div class="format">
+      <div class="format-meta">Brands · artists · film</div>
+      <div class="format-title">Studio &amp; collabs</div>
+      <div class="format-desc">Beats, verses, hooks, jingles, features, mix and master. Bring a brief or a half-written hook — we take it to finished.</div>
+      <div class="format-meta" style="color:var(--accent)">See <a href="index.html#services" style="color:inherit;text-decoration:underline">services</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM + ASIDE -->
+<section id="request" class="book" style="border-bottom:1px solid var(--line)">
+  <form class="book-form" id="book-form" novalidate>
+    <div class="form-group">
+      <h2><span class="mono">01</span>What are you booking?</h2>
+      <div class="chips" id="type-chips" role="group" aria-label="Booking type">
+        <button type="button" class="chip" data-type="show" aria-pressed="true">Live show / gig</button>
+        <button type="button" class="chip" data-type="fest" aria-pressed="false">College fest</button>
+        <button type="button" class="chip" data-type="private" aria-pressed="false">Private event</button>
+        <button type="button" class="chip" data-type="brand" aria-pressed="false">Corporate / brand</button>
+        <button type="button" class="chip" data-type="studio" aria-pressed="false">Studio / collab</button>
+      </div>
+      <label class="field" for="bk-artist">Who do you want?
+        <select id="bk-artist" class="input">
+          <option>Full ODD GEN crew</option>
+          <option>Fentos</option>
+          <option>KANiF</option>
+          <option>SOL (production / studio)</option>
+          <option>Not sure — suggest one</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-group" id="event-fields">
+      <h2><span class="mono">02</span>The event</h2>
+      <label class="field" for="bk-event">Event name<input id="bk-event" class="input" type="text" placeholder="e.g. Annual fest, club night, launch"></label>
+      <div class="row-2">
+        <label class="field" for="bk-date">Date<input id="bk-date" class="input" type="date"></label>
+        <label class="field" for="bk-flex">Date flexible?
+          <select id="bk-flex" class="input"><option>Fixed date</option><option>Flexible by a few days</option><option>Just exploring</option></select>
+        </label>
+      </div>
+      <div class="row-2">
+        <label class="field" for="bk-city">City<input id="bk-city" class="input" type="text" placeholder="Mumbai"></label>
+        <label class="field" for="bk-venue">Venue<input id="bk-venue" class="input" type="text" placeholder="Venue or 'TBD'"></label>
+      </div>
+      <div class="row-3">
+        <label class="field" for="bk-crowd">Expected crowd
+          <select id="bk-crowd" class="input"><option>Under 200</option><option>200 – 500</option><option>500 – 2,000</option><option>2,000+</option><option>Not sure yet</option></select>
+        </label>
+        <label class="field" for="bk-set">Set length
+          <select id="bk-set" class="input"><option>20 min</option><option>30 min</option><option selected>45 min</option><option>60 min+</option></select>
+        </label>
+        <label class="field" for="bk-sound">Sound system
+          <select id="bk-sound" class="input"><option>Venue provides PA</option><option>We need help with sound</option><option>Not sure</option></select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h2><span class="mono" id="grp-3-n">03</span>Budget &amp; details</h2>
+      <label class="field" for="bk-budget">Budget range
+        <select id="bk-budget" class="input">
+          <option>Let's talk</option>
+          <option>[BUDGET RANGE 1]</option>
+          <option>[BUDGET RANGE 2]</option>
+          <option>[BUDGET RANGE 3]</option>
+        </select>
+      </label>
+      <label class="field" for="bk-notes">Anything else?
+        <textarea id="bk-notes" class="input" placeholder="Songs you'd love to hear, the vibe of the crowd, travel and stay, other artists on the bill, a brief for studio work…"></textarea>
+      </label>
+    </div>
+
+    <div class="form-group" style="border-bottom:none;padding-bottom:0">
+      <h2><span class="mono" id="grp-4-n">04</span>About you</h2>
+      <div class="row-2">
+        <label class="field" for="bk-name">Your name *<input id="bk-name" class="input" type="text" autocomplete="name" required></label>
+        <label class="field" for="bk-org">Organisation<input id="bk-org" class="input" type="text" autocomplete="organization" placeholder="College, company, promoter"></label>
+      </div>
+      <div class="row-2">
+        <label class="field" for="bk-email">Email *<input id="bk-email" class="input" type="email" autocomplete="email" required></label>
+        <label class="field" for="bk-phone">Phone / WhatsApp<input id="bk-phone" class="input" type="tel" autocomplete="tel" placeholder="+91"></label>
+      </div>
+      <p class="note" id="form-error" role="alert" style="color:var(--accent)" hidden>Add your name and a valid email so we can reply.</p>
+      <button type="submit" class="btn btn-accent" style="align-self:flex-start">Send booking request</button>
+      <p class="note">This opens your email app with everything filled in — just hit send. Prefer DMs? Message <a href="https://www.instagram.com/oddgenrecords/" target="_blank" rel="noopener" style="text-decoration:underline">@oddgenrecords</a> on Instagram.</p>
+      <div class="notice" id="form-done" hidden>Your email app should have opened with the request. Once you send it, we'll reply within [X] days. Nothing opened? Email us at <a href="mailto:oddgenproductions@gmail.com" style="text-decoration:underline">oddgenproductions@gmail.com</a>.</div>
+    </div>
+  </form>
+
+  <aside class="book-aside">
+    <div class="panel">
+      <div class="eyebrow">How it works</div>
+      <ol class="steps">
+        <li><span class="n">01</span><div><strong>Send a request</strong><span>Date, city, crowd and budget — the more we know, the faster we can say yes.</span></div></li>
+        <li><span class="n">02</span><div><strong>We reply with a quote</strong><span>Availability, fee and the setlist we'd bring — usually within [X] days.</span></div></li>
+        <li><span class="n">03</span><div><strong>Lock the date</strong><span>Confirm with a short agreement and [X]% advance.</span></div></li>
+        <li><span class="n">04</span><div><strong>Show day</strong><span>Soundcheck, then we bring the noise.</span></div></li>
+      </ol>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">What we'll need from you</div>
+      <ul class="checklist">
+        <li>PA system with [X] wireless mics and stage monitors</li>
+        <li>A laptop / DJ input for backing tracks</li>
+        <li>[30]-minute soundcheck before doors</li>
+        <li>A green room with water for the crew</li>
+        <li>Travel and stay for shows outside Mumbai</li>
+      </ul>
+      <p class="note">Full tech rider shared once the date is locked.</p>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Straight to us</div>
+      <a href="mailto:oddgenproductions@gmail.com" style="font-size:18px;font-weight:600">oddgenproductions@gmail.com</a>
+      <div class="contact-line">[PHONE] · <a href="https://www.instagram.com/oddgenrecords/" target="_blank" rel="noopener">@oddgenrecords</a></div>
+    </div>
+  </aside>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">02 — Before you ask</div>
+      <h2 class="h-xl">Booking FAQ</h2>
+    </div>
+  </div>
+  <div class="faq">
+    <details>
+      <summary>How far in advance should we book?</summary>
+      <p>At least [X] weeks for most shows. For festivals and fest season (Dec–Mar), reach out earlier — dates go fast.</p>
+    </details>
+    <details>
+      <summary>Do you perform outside Mumbai?</summary>
+      <p>Yes. For outstation shows, travel and stay for the crew are covered by the organiser on top of the fee.</p>
+    </details>
+    <details>
+      <summary>Can we request specific songs?</summary>
+      <p>Absolutely. Tell us in the form — Usool, Bohot Sara Cheeze, Murder of a Free Bird, I Wish, or Ehsaas for a slower moment. We'll build the set around it.</p>
+    </details>
+    <details>
+      <summary>Can we book just one artist?</summary>
+      <p>Yes — pick Fentos, KANiF or the full crew in the form. If you're not sure who fits your crowd, choose "Not sure" and we'll suggest.</p>
+    </details>
+    <details>
+      <summary>What does a show cost?</summary>
+      <p>It depends on format, city, set length and crowd size. Send the form with a budget range and we'll reply with a clear quote — no surprises.</p>
+    </details>
+    <details>
+      <summary>Can you make a custom song for our event or brand?</summary>
+      <p>Yes — anthems, jingles and original songs are part of our studio work. Pick "Studio / collab" above, or see <a href="index.html#services" style="text-decoration:underline">services</a>.</p>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" style="padding-top:48px">
+  <div class="footer-bottom"><span>© 2026 ODD GEN. All rights reserved.</span><span>Made loud in Mumbai.</span></div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let type = 'show';
+
+// Studio bookings don't need the event block; renumber the groups that follow.
+function setType(t) {
+  type = t;
+  document.querySelectorAll('#type-chips .chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.type === t)));
+  const studio = t === 'studio';
+  $('event-fields').hidden = studio;
+  $('grp-3-n').textContent = studio ? '02' : '03';
+  $('grp-4-n').textContent = studio ? '03' : '04';
+}
+$('type-chips').addEventListener('click', (e) => { const c = e.target.closest('.chip'); if (c) setType(c.dataset.type); });
+
+const preset = new URLSearchParams(location.search).get('type');
+if (preset && document.querySelector(`#type-chips [data-type="${preset}"]`)) setType(preset);
+
+$('book-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = $('bk-name').value.trim();
+  const email = $('bk-email');
+  if (!name || !email.value.trim() || !email.checkValidity()) {
+    $('form-error').hidden = false;
+    (name ? email : $('bk-name')).focus();
+    return;
+  }
+  $('form-error').hidden = true;
+
+  const label = document.querySelector('#type-chips [aria-pressed="true"]').textContent;
+  const v = (id) => $(id).value.trim() || '—';
+  const lines = [
+    `Booking type: ${label}`,
+    `Artist: ${v('bk-artist')}`,
+    ''
+  ];
+  if (type !== 'studio') {
+    lines.push(
+      `Event: ${v('bk-event')}`,
+      `Date: ${v('bk-date')} (${v('bk-flex')})`,
+      `City / venue: ${v('bk-city')} / ${v('bk-venue')}`,
+      `Crowd: ${v('bk-crowd')}`,
+      `Set length: ${v('bk-set')}`,
+      `Sound: ${v('bk-sound')}`,
+      ''
+    );
+  }
+  lines.push(
+    `Budget: ${v('bk-budget')}`,
+    `Notes: ${v('bk-notes')}`,
+    '',
+    `Name: ${name}`,
+    `Organisation: ${v('bk-org')}`,
+    `Email: ${email.value.trim()}`,
+    `Phone: ${v('bk-phone')}`
+  );
+  const subject = `Booking request — ${label}${type !== 'studio' && $('bk-city').value ? ' — ' + $('bk-city').value : ''}`;
+  location.href = 'mailto:oddgenproductions@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+  $('form-done').hidden = false;
+});
+</script>
+</body>
+</html>
