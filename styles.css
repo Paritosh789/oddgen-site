@@ -133,10 +133,6 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .about h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1; text-transform: uppercase; }
 .about-copy { display: flex; flex-direction: column; gap: 24px; padding-top: 44px; font-size: 19px; line-height: 1.6; color: var(--soft); }
 .about-copy p { margin: 0; }
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
-.stats > div { border-top: 1px solid var(--line); padding-top: 16px; }
-.stat-n { font-family: var(--display); font-size: 40px; color: var(--fg); }
-.stat-l { font-size: 14px; color: var(--muted); }
 
 /* songs */
 .platforms { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -385,8 +381,6 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .about { grid-template-columns: 1fr; gap: 20px; }
   .about h2 { font-size: 44px; line-height: 1.02; }
   .about-copy { padding-top: 0; font-size: 17px; gap: 20px; }
-  .stat-n { font-size: 32px; }
-  .stat-l { font-size: 13px; }
 
   .platforms .pill { font-size: 13px; padding: 0 14px; }
   .track { grid-template-columns: 56px 1fr 48px; gap: 14px; padding: 16px 0; }
