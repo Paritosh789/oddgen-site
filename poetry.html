@@ -218,10 +218,13 @@ document.querySelectorAll('.preview-toggle button').forEach((b) => b.addEventLis
 
 $('apply-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  const body = `Pen name: ${$('ap-name').value}\nEmail: ${$('ap-email').value}\nWriting: ${$('ap-link').value}`;
-  location.href = 'mailto:oddgenproductions@gmail.com?subject=' + encodeURIComponent('ODD GEN Pages — writer application') + '&body=' + encodeURIComponent(body);
-  $('apply-form').hidden = true;
-  $('apply-done').hidden = false;
+  const data = { 'Pen name': $('ap-name').value.trim(), 'Email': $('ap-email').value.trim(), 'Writing link': $('ap-link').value.trim() };
+  sendForm('writer', data).then((saved) => {
+    if (saved) $('apply-done').textContent = `Application received, ${data['Pen name']}. We'll get back to you at ${data['Email']} within [X] days.`;
+    else mailForm('ODD GEN Pages — writer application', data);
+    $('apply-form').hidden = true;
+    $('apply-done').hidden = false;
+  });
 });
 
 if (location.hash === '#apply') verified = false;

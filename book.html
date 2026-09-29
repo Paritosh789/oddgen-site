@@ -167,8 +167,9 @@
         <label class="field" for="bk-phone">Phone / WhatsApp<input id="bk-phone" class="input" type="tel" autocomplete="tel" placeholder="+91"></label>
       </div>
       <p class="note" id="form-error" role="alert" style="color:var(--accent)" hidden>Add your name and a valid email so we can reply.</p>
+      <input type="text" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-accent" style="align-self:flex-start">Send booking request</button>
-      <p class="note">This opens your email app with everything filled in — just hit send. Prefer DMs? Message <a href="https://www.instagram.com/oddgenrecords/" target="_blank" rel="noopener" style="text-decoration:underline">@oddgenrecords</a> on Instagram.</p>
+      <p class="note">We usually reply within [X] days. Prefer DMs? Message <a href="https://www.instagram.com/oddgenrecords/" target="_blank" rel="noopener" style="text-decoration:underline">@oddgenrecords</a> on Instagram.</p>
       <div class="notice" id="form-done" hidden>Your email app should have opened with the request. Once you send it, we'll reply within [X] days. Nothing opened? Email us at <a href="mailto:oddgenproductions@gmail.com" style="text-decoration:underline">oddgenproductions@gmail.com</a>.</div>
     </div>
   </form>
@@ -274,35 +275,44 @@ $('book-form').addEventListener('submit', (e) => {
   $('form-error').hidden = true;
 
   const label = document.querySelector('#type-chips [aria-pressed="true"]').textContent;
-  const v = (id) => $(id).value.trim() || '—';
-  const lines = [
-    `Booking type: ${label}`,
-    `Artist: ${v('bk-artist')}`,
-    ''
-  ];
+  const v = (id) => $(id).value.trim();
+  const data = { 'Booking type': label, 'Artist': v('bk-artist') };
   if (type !== 'studio') {
-    lines.push(
-      `Event: ${v('bk-event')}`,
-      `Date: ${v('bk-date')} (${v('bk-flex')})`,
-      `City / venue: ${v('bk-city')} / ${v('bk-venue')}`,
-      `Crowd: ${v('bk-crowd')}`,
-      `Set length: ${v('bk-set')}`,
-      `Sound: ${v('bk-sound')}`,
-      ''
-    );
+    Object.assign(data, {
+      'Event': v('bk-event'),
+      'Date': v('bk-date'),
+      'Date flexible': v('bk-flex'),
+      'City': v('bk-city'),
+      'Venue': v('bk-venue'),
+      'Crowd': v('bk-crowd'),
+      'Set length': v('bk-set'),
+      'Sound': v('bk-sound'),
+    });
   }
-  lines.push(
-    `Budget: ${v('bk-budget')}`,
-    `Notes: ${v('bk-notes')}`,
-    '',
-    `Name: ${name}`,
-    `Organisation: ${v('bk-org')}`,
-    `Email: ${email.value.trim()}`,
-    `Phone: ${v('bk-phone')}`
-  );
-  const subject = `Booking request — ${label}${type !== 'studio' && $('bk-city').value ? ' — ' + $('bk-city').value : ''}`;
-  location.href = 'mailto:oddgenproductions@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-  $('form-done').hidden = false;
+  Object.assign(data, {
+    'Budget': v('bk-budget'),
+    'Notes': v('bk-notes'),
+    'Name': name,
+    'Organisation': v('bk-org'),
+    'Email': email.value.trim(),
+    'Phone': v('bk-phone'),
+  });
+
+  const btn = $('book-form').querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  sendForm('booking', Object.assign({ website: $('book-form').elements.website.value }, data)).then((saved) => {
+    btn.disabled = false;
+    btn.textContent = 'Send booking request';
+    if (saved) {
+      $('form-done').textContent = `Thanks, ${name.split(' ')[0]} — your request is in. We'll reply to ${data['Email']} within [X] days.`;
+      $('book-form').reset();
+      setType('show');
+    } else {
+      mailForm(`Booking request — ${label}${data['City'] ? ' — ' + data['City'] : ''}`, data);
+    }
+    $('form-done').hidden = false;
+  });
 });
 </script>
 </body>

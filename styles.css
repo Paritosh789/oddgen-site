@@ -210,6 +210,22 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .event-city { font-family: var(--mono); font-size: 14px; text-transform: uppercase; color: var(--soft); }
 .event .btn { justify-self: end; height: 52px; font-size: 15px; }
 .event .icon-btn { border: 1.5px solid var(--fg); }
+/* ticket counter */
+.ticket-counter { margin-top: 48px; padding: 40px; border-radius: 24px; background: var(--card); border-top: 4px solid var(--accent); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; }
+.tc-intro { display: flex; flex-direction: column; gap: 16px; }
+.tc-intro h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1; text-transform: uppercase; }
+.tc-intro p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--soft); }
+.tc-steps { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+.tc-steps li { display: flex; gap: 12px; align-items: center; }
+.tc-steps span { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+.tc-form { display: flex; flex-direction: column; gap: 18px; }
+.stepper { display: inline-flex; align-items: center; align-self: flex-start; border: 1px solid var(--field-line); border-radius: 999px; overflow: hidden; }
+.stepper button { width: 52px; height: 52px; border: none; background: transparent; color: var(--fg); font-size: 22px; cursor: pointer; }
+.stepper button:hover { background: var(--line); }
+.stepper input { width: 56px; height: 52px; border: none; background: transparent; color: var(--fg); font-family: var(--display); font-size: 26px; text-align: center; -moz-appearance: textfield; }
+.stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.tc-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 6px; }
+.tc-total { font-family: var(--mono); font-size: 13px; color: var(--muted); }
 .book-strip { margin-top: 48px; padding: 56px 48px; min-height: 320px; border-radius: 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; background: linear-gradient(90deg, rgba(15,14,12,.92) 0%, rgba(15,14,12,.55) 55%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) center 30% / cover; }
 .book-strip p { margin: 0; max-width: 520px; font-family: var(--display); font-size: 44px; line-height: 1.05; text-transform: uppercase; }
 
@@ -326,7 +342,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .event { grid-template-columns: 120px 1fr auto; }
   .event-city { display: none; }
   .services { grid-template-columns: 1fr; gap: 48px; }
-  .notebook, .book { grid-template-columns: 1fr; }
+  .notebook, .book, .ticket-counter { grid-template-columns: 1fr; }
   .book-aside { position: static; }
   .footer-top { flex-direction: column; }
 }
@@ -405,6 +421,9 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .event-title { font-size: 17px; }
   .event .btn { display: none; }
   .event .icon-btn { display: inline-flex; }
+  .ticket-counter { grid-template-columns: 1fr; gap: 28px; padding: 24px 20px; border-radius: 18px; margin-top: 28px; }
+  .tc-intro h3 { font-size: 40px; }
+  .tc-foot { flex-direction: column; align-items: stretch; }
   .book-strip { flex-direction: column; align-items: stretch; padding: 24px 20px; min-height: 360px; justify-content: flex-end; background: linear-gradient(0deg, rgba(15,14,12,.95) 25%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) 30% center / cover; }
   .book-strip p { font-size: 30px; }
   .mark { width: 36px; height: 36px; }
