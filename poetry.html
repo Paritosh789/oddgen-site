@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bars on Paper — ODD GEN Pages</title>
+<title>Bars on Paper | ODD GEN Pages</title>
 <meta name="description" content="An open notebook for verified writers. Verses, poems and hooks from the ODD GEN crew and friends.">
 <meta name="theme-color" content="#0F0E0C">
 <meta property="og:image" content="https://oddgen.in/assets/live-crew.jpg">
@@ -15,7 +15,7 @@
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="logo" aria-label="ODD GEN — home"><span class="mark" aria-hidden="true"><span class="mark-frame"></span><span class="mark-disc"></span></span><span class="wordmark" aria-hidden="true"></span></a>
+  <a href="index.html" class="logo" aria-label="ODD GEN · home"><span class="mark" aria-hidden="true"><span class="mark-frame"></span><span class="mark-disc"></span></span><span class="wordmark" aria-hidden="true"></span></a>
   <nav class="site-nav" aria-label="Main">
     <a href="index.html">Home</a>
     <a href="index.html#songs">Songs</a>
@@ -44,7 +44,7 @@
     <h1>Bars on paper</h1>
   </div>
   <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
-    <p>An open notebook. Anyone can read — only verified writers can publish and edit their own pieces.</p>
+    <p>An open notebook. Anyone can read. Only verified writers can publish and edit their own pieces.</p>
     <!-- Preview switch from the design. Remove once real writer sign-in exists. -->
     <div class="preview-toggle" role="group" aria-label="Preview as">
       <span>Preview as</span>
@@ -98,7 +98,7 @@
         <label class="field" for="ap-link">Link to your writing (Instagram, SoundCloud, doc)<input id="ap-link" class="input" type="url" placeholder="https://"></label>
         <button type="submit" class="btn btn-accent" style="height:52px;margin-top:6px">Apply for verification</button>
       </form>
-      <div class="notice" id="apply-done" hidden>Almost there — send the email that just opened and we'll get back to you within [X] days.</div>
+      <div class="notice" id="apply-done" hidden>Almost there: send the email that just opened and we'll get back to you within [X] days.</div>
     </div>
   </div>
 
@@ -221,7 +221,7 @@ $('apply-form').addEventListener('submit', (e) => {
   const data = { 'Pen name': $('ap-name').value.trim(), 'Email': $('ap-email').value.trim(), 'Writing link': $('ap-link').value.trim() };
   sendForm('writer', data).then((saved) => {
     if (saved) $('apply-done').textContent = `Application received, ${data['Pen name']}. We'll get back to you at ${data['Email']} within [X] days.`;
-    else mailForm('ODD GEN Pages — writer application', data);
+    else mailForm('ODD GEN Pages · writer application', data);
     $('apply-form').hidden = true;
     $('apply-done').hidden = false;
   });

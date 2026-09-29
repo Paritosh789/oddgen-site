@@ -1,4 +1,4 @@
-// ODD GEN — shared behaviour: intro, mobile menu, YouTube player modal, vault "notify me",
+// ODD GEN: shared behaviour: intro, mobile menu, YouTube player modal, vault "notify me",
 // form submissions and the ticket counter.
 
 // Form inbox: the Google Apps Script web app URL (see google-apps-script/README.md).
@@ -18,7 +18,7 @@ function sendForm(form, data) {
 
 // Fallback when the inbox isn't reachable: a pre-filled email to the crew.
 function mailForm(subject, data) {
-  const body = Object.keys(data).map((k) => `${k}: ${data[k] || '—'}`).join('\n');
+  const body = Object.keys(data).map((k) => `${k}: ${data[k] || '-'}`).join('\n');
   location.href = `mailto:${CREW_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
@@ -43,7 +43,7 @@ if (menuBtn && menu) {
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 }
 
-// Video modal — any element with data-video="<youtube id>" opens the player
+// Video modal: any element with data-video="<youtube id>" opens the player
 const modal = document.querySelector('.video-modal');
 if (modal) {
   const frame = modal.querySelector('.video-frame');
@@ -79,7 +79,7 @@ document.querySelectorAll('.notify').forEach((btn) => {
   });
 });
 
-// Ticket counter — shows come from the event rows (data-show, optional data-price per ticket)
+// Ticket counter: shows come from the event rows (data-show, optional data-price per ticket)
 const counter = document.getElementById('ticket-form');
 if (counter) {
   const showSelect = document.getElementById('tk-show');
@@ -137,8 +137,8 @@ if (counter) {
         setQty(1);
       } else {
         delete data.website;
-        mailForm(`Ticket request — ${data['Show']}`, data);
-        status.textContent = `Your email app should have opened with the request — hit send and we'll confirm. Nothing opened? WhatsApp or email us at ${CREW_EMAIL}.`;
+        mailForm(`Ticket request · ${data['Show']}`, data);
+        status.textContent = `Your email app should have opened with the request. Hit send and we'll confirm. Nothing opened? WhatsApp or email us at ${CREW_EMAIL}.`;
       }
       status.hidden = false;
     });

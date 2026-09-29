@@ -1,4 +1,4 @@
-/* ODD GEN — shared styles. Tokens come straight from the design file. */
+/* ODD GEN: shared styles. Tokens come straight from the design file. */
 /* Fonts are self-hosted: an external font stylesheet blocks the whole page from rendering if it stalls. */
 @font-face { font-family: 'Anton'; font-weight: 400; font-display: swap; src: url(assets/fonts/anton-latin.woff2) format('woff2'); }
 @font-face { font-family: 'Instrument Sans'; font-weight: 400 700; font-display: swap; src: url(assets/fonts/instrument-sans-latin.woff2) format('woff2'); }
