@@ -212,6 +212,9 @@ a.service-price:hover { text-decoration: underline; }
 .event-month { font-family: var(--mono); font-size: 13px; text-transform: uppercase; color: var(--muted); }
 .event-title { font-size: 26px; font-weight: 600; }
 .event-venue { font-size: 15px; color: var(--muted); margin-top: 4px; }
+.venue-link { color: var(--accent); font-weight: 600; }
+.venue-link svg { display: inline; vertical-align: -1px; margin-left: 4px; }
+.venue-link:hover { color: var(--accent); text-decoration: underline; }
 .event-city { font-family: var(--mono); font-size: 14px; text-transform: uppercase; color: var(--soft); }
 .event .btn { justify-self: end; height: 52px; font-size: 15px; }
 .event .icon-btn { border: 1.5px solid var(--fg); }
