@@ -131,7 +131,9 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 @media (prefers-reduced-motion: reduce) { .ticker-track, .now-playing > img { animation: none; } html { scroll-behavior: auto; } }
 
 /* about */
-.about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 80px; }
+.about { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 80px; }
+.about-photo { grid-column: 1 / -1; aspect-ratio: 21 / 8; }
+.about-photo img { object-position: center 28%; }
 .about h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 76px; line-height: 1; text-transform: uppercase; }
 .about-copy { display: flex; flex-direction: column; gap: 24px; padding-top: 44px; font-size: 19px; line-height: 1.6; color: var(--soft); }
 .about-copy p { margin: 0; }
