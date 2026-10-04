@@ -424,12 +424,15 @@ try {
 
       <div class="tc-step-label"><span>2</span>Pay by UPI</div>
       <div class="tc-pay">
-        <img src="assets/upi-qr.png" alt="UPI QR code for drmayurgiri46@okaxis" width="200" height="224">
+        <div class="tc-qr">
+          <div id="tk-qr"><img src="assets/upi-qr.png" alt="UPI QR code for drmayurgiri46@okaxis" width="200" height="224"></div>
+          <div class="tc-qr-caption" id="tk-qr-caption">Scan to pay</div>
+        </div>
         <div class="tc-pay-info">
           <div class="tc-amount-label">Amount to pay</div>
           <div class="tc-amount" id="tk-amount"></div>
           <div class="tc-upi">UPI ID <strong id="tk-upi">drmayurgiri46@okaxis</strong> <button type="button" class="tc-copy" id="tk-copy">Copy</button></div>
-          <p class="note">Scan with any UPI app (GPay, PhonePe, Paytm). The payee name shows as <strong>Mayur Giri</strong>, ODD GEN's executive producer.</p>
+          <p class="note">Scan with any UPI app (GPay, PhonePe, Paytm) and the amount fills in by itself. The payee name shows as <strong>Mayur Giri</strong>, ODD GEN's executive producer.</p>
           <a class="btn btn-ghost tc-upi-app" id="tk-upi-link" href="upi://pay?pa=drmayurgiri46@okaxis&amp;pn=ODD%20GEN&amp;cu=INR">Open UPI app</a>
         </div>
       </div>
@@ -527,6 +530,7 @@ try {
   <div class="video-frame"></div>
 </div>
 
+<script src="assets/vendor/qrcode.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

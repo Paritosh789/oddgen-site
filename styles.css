@@ -226,7 +226,9 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .tc-step-label:first-child { margin-top: 0; }
 .tc-step-label span { width: 28px; height: 28px; border-radius: 999px; background: var(--accent); color: var(--bg); display: inline-flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 13px; font-weight: 700; }
 .tc-pay { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; align-items: center; padding: 20px; border: 1px dashed var(--field-line); border-radius: 18px; }
-.tc-pay img { width: 200px; height: auto; border-radius: 14px; background: #fff; }
+.tc-qr { width: 200px; padding: 12px 12px 10px; border-radius: 14px; background: #fff; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tc-qr #tk-qr, .tc-qr svg, .tc-qr img { display: block; width: 100%; height: auto; }
+.tc-qr-caption { font-family: var(--mono); font-size: 12px; font-weight: 700; color: #0F0E0C; text-align: center; }
 .tc-pay-info { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
 .tc-amount-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
 .tc-amount { font-family: var(--display); font-size: 44px; line-height: 1; color: var(--accent); }
@@ -436,7 +438,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .ticket-counter { grid-template-columns: 1fr; gap: 28px; padding: 24px 20px; border-radius: 18px; margin-top: 28px; }
   .tc-intro h3 { font-size: 40px; }
   .tc-pay { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 16px; }
-  .tc-pay img { width: 220px; }
+  .tc-qr { width: 230px; }
   .tc-pay-info { align-items: center; }
   .tc-upi { justify-content: center; }
   .book-strip { flex-direction: column; align-items: stretch; padding: 24px 20px; min-height: 360px; justify-content: flex-end; background: linear-gradient(0deg, rgba(15,14,12,.95) 25%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) 30% center / cover; }

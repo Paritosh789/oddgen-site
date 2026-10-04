@@ -122,7 +122,17 @@ if (counter) {
     const qty = Number(qtyInput.value);
     amountEl.textContent = total ? `₹${total.toLocaleString('en-IN')}` : 'Price TBA';
     // The UPI ID stays unencoded: some UPI apps misread "%40" in place of "@".
-    upiLink.href = `upi://pay?pa=${UPI_ID}&pn=ODD%20GEN&cu=INR&tn=${encodeURIComponent(`ODD GEN tickets x${qty}`)}${total ? `&am=${total}` : ''}`;
+    // Payee name matches the bank account holder, so apps don't flag a name mismatch.
+    const upiUri = `upi://pay?pa=${UPI_ID}&pn=Mayur%20Giri&cu=INR&tn=${encodeURIComponent(`ODD GEN tickets x${qty}`)}${total ? `&am=${total}.00` : ''}`;
+    upiLink.href = upiUri;
+    // Redraw the QR with the amount baked in; the static QR (no amount) stays if the generator didn't load.
+    if (window.qrcode) {
+      const qr = qrcode(0, 'M');
+      qr.addData(upiUri);
+      qr.make();
+      document.getElementById('tk-qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 4, scalable: true, alt: `UPI QR code to pay ${total ? '₹' + total : ''} to ${UPI_ID}` });
+      document.getElementById('tk-qr-caption').textContent = total ? `Scan to pay ₹${total.toLocaleString('en-IN')}` : 'Scan to pay';
+    }
   }
   const setQty = (n) => { qtyInput.value = String(Math.min(10, Math.max(1, n))); updateAmount(); };
   counter.querySelector('[data-step="-1"]').addEventListener('click', () => setQty(Number(qtyInput.value) - 1));
