@@ -2,17 +2,36 @@
 // form submissions and the ticket counter.
 
 // Form inbox: the Google Apps Script web app URL (see google-apps-script/README.md).
-// While it's empty, forms fall back to opening the visitor's email app.
+// While it's empty, forms are emailed to the crew through FormSubmit instead.
 const FORMS_URL = '';
 const CREW_EMAIL = 'oddgenproductions@gmail.com';
+const FORM_SUBJECTS = { tickets: 'Ticket purchase', booking: 'Booking enquiry', writer: 'Writer application' };
 
-// Sends one form to the Google Sheet. Resolves true when it was saved, false otherwise.
+// Sends one form to the crew. Resolves true when it was delivered, false otherwise.
 function sendForm(form, data) {
-  if (!FORMS_URL) return Promise.resolve(false);
-  // text/plain keeps this a "simple" request, so the browser skips the CORS preflight Apps Script can't answer.
-  return fetch(FORMS_URL, { method: 'POST', body: JSON.stringify(Object.assign({ form }, data)) })
+  if (FORMS_URL) {
+    // text/plain keeps this a "simple" request, so the browser skips the CORS preflight Apps Script can't answer.
+    return fetch(FORMS_URL, { method: 'POST', body: JSON.stringify(Object.assign({ form }, data)) })
+      .then((r) => r.json())
+      .then((r) => r.ok === true)
+      .catch(() => false);
+  }
+  // FormSubmit emails the fields to CREW_EMAIL (one-time "Activate" click from that inbox).
+  const payload = Object.assign({}, data);
+  const who = payload['Full name'] || payload['Name'] || payload['Pen name'] || 'someone';
+  payload._subject = `oddgen.in: ${FORM_SUBJECTS[form]} from ${who}`;
+  payload._template = 'table';
+  payload._captcha = 'false';
+  payload._honey = payload.website || '';
+  delete payload.website;
+  if (payload['Email']) { payload.email = payload['Email']; delete payload['Email']; } // FormSubmit sets reply-to from "email"
+  return fetch(`https://formsubmit.co/ajax/${CREW_EMAIL}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+  })
     .then((r) => r.json())
-    .then((r) => r.ok === true)
+    .then((r) => String(r.success) === 'true')
     .catch(() => false);
 }
 
@@ -82,13 +101,14 @@ document.querySelectorAll('.notify').forEach((btn) => {
 // Ticket counter: shows come from the event rows (data-show, optional data-price per ticket)
 const counter = document.getElementById('ticket-form');
 if (counter) {
+  const UPI_ID = 'drmayurgiri46@okaxis';
   const showSelect = document.getElementById('tk-show');
   const qtyInput = document.getElementById('tk-qty');
-  const total = document.getElementById('tk-total');
+  const amountEl = document.getElementById('tk-amount');
+  const upiLink = document.getElementById('tk-upi-link');
   const status = document.getElementById('tk-status');
-  const events = [...document.querySelectorAll('.event[data-show]')];
 
-  events.forEach((ev) => {
+  document.querySelectorAll('.event[data-show]').forEach((ev) => {
     const opt = document.createElement('option');
     opt.value = ev.dataset.show;
     opt.textContent = ev.dataset.show;
@@ -96,49 +116,62 @@ if (counter) {
     showSelect.appendChild(opt);
   });
 
-  const setQty = (n) => { qtyInput.value = String(Math.min(10, Math.max(1, n))); updateTotal(); };
-  function updateTotal() {
-    const price = Number(showSelect.selectedOptions[0]?.dataset.price);
-    total.textContent = price ? `Total ₹${(price * Number(qtyInput.value)).toLocaleString('en-IN')} · pay after we confirm` : 'Price confirmed when we call you back';
+  const amount = () => (Number(showSelect.selectedOptions[0]?.dataset.price) || 0) * Number(qtyInput.value);
+  function updateAmount() {
+    const total = amount();
+    const qty = Number(qtyInput.value);
+    amountEl.textContent = total ? `₹${total.toLocaleString('en-IN')}` : 'Price TBA';
+    const params = new URLSearchParams({ pa: UPI_ID, pn: 'ODD GEN', cu: 'INR', tn: `ODD GEN tickets x${qty}` });
+    if (total) params.set('am', String(total));
+    upiLink.href = `upi://pay?${params.toString().replace(/\+/g, '%20')}`;
   }
+  const setQty = (n) => { qtyInput.value = String(Math.min(10, Math.max(1, n))); updateAmount(); };
   counter.querySelector('[data-step="-1"]').addEventListener('click', () => setQty(Number(qtyInput.value) - 1));
   counter.querySelector('[data-step="1"]').addEventListener('click', () => setQty(Number(qtyInput.value) + 1));
   qtyInput.addEventListener('change', () => setQty(Number(qtyInput.value) || 1));
-  showSelect.addEventListener('change', updateTotal);
-  updateTotal();
+  showSelect.addEventListener('change', updateAmount);
+  updateAmount();
+
+  document.getElementById('tk-copy').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => { btn.textContent = 'Copy'; }, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(UPI_ID).then(done, () => {});
+  });
 
   // "Get tickets" on an event row jumps here with that show picked
   document.querySelectorAll('[data-ticket-show]').forEach((a) => a.addEventListener('click', () => {
     showSelect.value = a.dataset.ticketShow;
-    updateTotal();
+    updateAmount();
   }));
 
   counter.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!counter.reportValidity()) return;
+    const total = amount();
     const data = {
       'Show': showSelect.value,
       'Tickets': qtyInput.value,
-      'Name': document.getElementById('tk-name').value.trim(),
-      'Phone / WhatsApp': document.getElementById('tk-phone').value.trim(),
+      'Amount paid': total ? `₹${total}` : 'Price TBA',
+      'Full name': document.getElementById('tk-name').value.trim(),
+      'WhatsApp': document.getElementById('tk-phone').value.trim(),
       'Email': document.getElementById('tk-email').value.trim(),
-      'Note': document.getElementById('tk-note').value.trim(),
+      'UPI transaction ID': document.getElementById('tk-utr').value.trim(),
       website: counter.elements.website.value,
     };
     const btn = counter.querySelector('button[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Sending…';
-    sendForm('tickets', data).then((saved) => {
+    sendForm('tickets', data).then((sent) => {
       btn.disabled = false;
-      btn.textContent = 'Request tickets';
-      if (saved) {
-        status.textContent = `Got it, ${data['Name'].split(' ')[0]}! ${data['Tickets']} ticket(s) for ${data['Show']} are on hold. We'll WhatsApp or call you on ${data['Phone / WhatsApp']} to confirm and share payment details.`;
+      btn.textContent = "I've paid, send my details";
+      if (sent) {
+        status.textContent = `Thanks, ${data['Full name'].split(' ')[0]}! We've got your details for ${data['Tickets']} ticket(s) to ${data['Show']}. Once we've matched your payment (UPI ref ${data['UPI transaction ID']}), we'll send your entry pass on WhatsApp to ${data['WhatsApp']}.`;
         counter.reset();
         setQty(1);
       } else {
         delete data.website;
-        mailForm(`Ticket request · ${data['Show']}`, data);
-        status.textContent = `Your email app should have opened with the request. Hit send and we'll confirm. Nothing opened? WhatsApp or email us at ${CREW_EMAIL}.`;
+        mailForm(`Ticket purchase: ${data['Show']}`, data);
+        status.textContent = `Your email app should have opened with your details. Hit send so we can match your payment. Nothing opened? Email ${CREW_EMAIL} with your name and UPI transaction ID.`;
       }
       status.hidden = false;
     });

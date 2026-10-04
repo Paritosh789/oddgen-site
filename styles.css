@@ -220,8 +220,19 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .stepper button:hover { background: var(--line); }
 .stepper input { width: 56px; height: 52px; border: none; background: transparent; color: var(--fg); font-family: var(--display); font-size: 26px; text-align: center; -moz-appearance: textfield; }
 .stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.tc-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 6px; }
-.tc-total { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.tc-step-label { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-family: var(--display); font-size: 24px; text-transform: uppercase; }
+.tc-step-label:first-child { margin-top: 0; }
+.tc-step-label span { width: 28px; height: 28px; border-radius: 999px; background: var(--accent); color: var(--bg); display: inline-flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 13px; font-weight: 700; }
+.tc-pay { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; align-items: center; padding: 20px; border: 1px dashed var(--field-line); border-radius: 18px; }
+.tc-pay img { width: 200px; height: auto; border-radius: 14px; background: #fff; }
+.tc-pay-info { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.tc-amount-label { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
+.tc-amount { font-family: var(--display); font-size: 44px; line-height: 1; color: var(--accent); }
+.tc-upi { font-size: 14px; color: var(--soft); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tc-upi strong { font-family: var(--mono); font-size: 14px; color: var(--fg); }
+.tc-copy { height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--field-line); background: transparent; color: var(--fg); font-size: 12px; font-weight: 600; cursor: pointer; }
+.tc-upi-app { display: none; height: 48px; }
+@media (hover: none) and (pointer: coarse) { .tc-upi-app { display: inline-flex; } }
 .book-strip { margin-top: 48px; padding: 56px 48px; min-height: 320px; border-radius: 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; background: linear-gradient(90deg, rgba(15,14,12,.92) 0%, rgba(15,14,12,.55) 55%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) center 30% / cover; }
 .book-strip p { margin: 0; max-width: 520px; font-family: var(--display); font-size: 44px; line-height: 1.05; text-transform: uppercase; }
 
@@ -417,7 +428,10 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .event .icon-btn { display: inline-flex; }
   .ticket-counter { grid-template-columns: 1fr; gap: 28px; padding: 24px 20px; border-radius: 18px; margin-top: 28px; }
   .tc-intro h3 { font-size: 40px; }
-  .tc-foot { flex-direction: column; align-items: stretch; }
+  .tc-pay { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 16px; }
+  .tc-pay img { width: 220px; }
+  .tc-pay-info { align-items: center; }
+  .tc-upi { justify-content: center; }
   .book-strip { flex-direction: column; align-items: stretch; padding: 24px 20px; min-height: 360px; justify-content: flex-end; background: linear-gradient(0deg, rgba(15,14,12,.95) 25%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) 30% center / cover; }
   .book-strip p { font-size: 30px; }
   .mark { width: 36px; height: 36px; }

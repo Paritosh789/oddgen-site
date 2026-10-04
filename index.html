@@ -404,15 +404,16 @@ try {
   <div id="tickets" class="ticket-counter">
     <div class="tc-intro">
       <div class="eyebrow">Ticket counter</div>
-      <h3>Reserve your spot</h3>
-      <p>Pick a show and how many of you are coming. We'll hold the tickets and WhatsApp or call you to confirm and share payment details (UPI).</p>
+      <h3>Get your tickets</h3>
+      <p>Pick your show, pay by UPI, then send us your details. We check the payment and send your entry pass on WhatsApp.</p>
       <ol class="tc-steps">
-        <li><span>01</span>Request tickets here</li>
-        <li><span>02</span>We confirm on WhatsApp / call</li>
-        <li><span>03</span>Pay by UPI, get your entry pass</li>
+        <li><span>01</span>Choose the show and tickets</li>
+        <li><span>02</span>Pay the total by UPI</li>
+        <li><span>03</span>Send your details and transaction ID</li>
       </ol>
     </div>
     <form class="tc-form" id="ticket-form">
+      <div class="tc-step-label"><span>1</span>Choose</div>
       <label class="field" for="tk-show">Show
         <select id="tk-show" class="input" required></select>
       </label>
@@ -423,17 +424,29 @@ try {
           <button type="button" data-step="1" aria-label="One more ticket">+</button>
         </div>
       </div>
+
+      <div class="tc-step-label"><span>2</span>Pay by UPI</div>
+      <div class="tc-pay">
+        <img src="assets/upi-qr.png" alt="UPI QR code for drmayurgiri46@okaxis" width="200" height="224">
+        <div class="tc-pay-info">
+          <div class="tc-amount-label">Amount to pay</div>
+          <div class="tc-amount" id="tk-amount"></div>
+          <div class="tc-upi">UPI ID <strong id="tk-upi">drmayurgiri46@okaxis</strong> <button type="button" class="tc-copy" id="tk-copy">Copy</button></div>
+          <p class="note">Scan with any UPI app (GPay, PhonePe, Paytm). The payee name shows as <strong>Mayur Giri</strong>, ODD GEN's executive producer.</p>
+          <a class="btn btn-ghost tc-upi-app" id="tk-upi-link" href="upi://pay?pa=drmayurgiri46@okaxis&amp;pn=ODD%20GEN&amp;cu=INR">Open UPI app</a>
+        </div>
+      </div>
+
+      <div class="tc-step-label"><span>3</span>Your details</div>
+      <label class="field" for="tk-name">Full name *<input id="tk-name" class="input" type="text" autocomplete="name" required></label>
       <div class="row-2">
-        <label class="field" for="tk-name">Your name *<input id="tk-name" class="input" type="text" autocomplete="name" required></label>
-        <label class="field" for="tk-phone">Phone / WhatsApp *<input id="tk-phone" class="input" type="tel" autocomplete="tel" placeholder="+91" required pattern="[+0-9 ()-]{10,}"></label>
+        <label class="field" for="tk-phone">WhatsApp number *<input id="tk-phone" class="input" type="tel" autocomplete="tel" placeholder="+91" required pattern="[+0-9 ()-]{10,}"></label>
+        <label class="field" for="tk-email">Email *<input id="tk-email" class="input" type="email" autocomplete="email" required></label>
       </div>
-      <label class="field" for="tk-email">Email<input id="tk-email" class="input" type="email" autocomplete="email"></label>
-      <label class="field" for="tk-note">Anything we should know?<input id="tk-note" class="input" type="text" placeholder="e.g. coming with friends, need an invoice"></label>
+      <label class="field" for="tk-utr">UPI transaction ID *<input id="tk-utr" class="input" type="text" inputmode="numeric" placeholder="12-digit UTR / reference number" required pattern="[A-Za-z0-9]{10,22}"></label>
+      <p class="note" style="margin-top:-8px">You'll find it in your UPI app's payment receipt, usually called UTR or UPI Ref No.</p>
       <input type="text" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <div class="tc-foot">
-        <span id="tk-total" class="tc-total"></span>
-        <button type="submit" class="btn btn-accent">Request tickets</button>
-      </div>
+      <button type="submit" class="btn btn-accent">I've paid, send my details</button>
       <p class="notice" id="tk-status" role="status" hidden></p>
     </form>
   </div>
