@@ -94,7 +94,9 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .site-header { position: sticky; top: 0; z-index: 50; height: 88px; padding: 0 var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); background: rgba(15, 14, 12, 0.92); backdrop-filter: blur(10px); }
 .site-nav { display: flex; gap: 32px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; }
 .site-nav a[aria-current="page"] { color: var(--accent); }
+.header-actions { display: flex; align-items: center; gap: 10px; }
 .header-cta { height: 44px; padding: 0 22px; font-size: 14px; }
+.header-tickets { height: 44px; padding: 0 18px; gap: 8px; font-size: 14px; border-width: 1px; }
 .menu-btn { display: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); align-items: center; justify-content: center; cursor: pointer; }
 .mobile-menu { display: none; }
 
@@ -353,9 +355,14 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .book-aside { position: static; }
   .footer-top { flex-direction: column; }
 }
-@media (max-width: 1020px) {
+@media (max-width: 1300px) {
+  .header-tickets { width: 44px; padding: 0; }
+  .header-tickets span { display: none; }
+}
+@media (max-width: 1100px) {
   .site-nav { display: none; }
-  .header-cta { margin-left: auto; margin-right: -16px; padding: 0 16px; }
+  .header-actions { margin-left: auto; gap: 8px; }
+  .header-cta { padding: 0 16px; }
   .menu-btn { display: inline-flex; }
   .mobile-menu.open { display: flex; position: fixed; inset: 88px 0 0; z-index: 49; flex-direction: column; gap: 4px; padding: 24px var(--gutter); background: var(--bg); overflow-y: auto; }
   .mobile-menu a { font-family: var(--display); font-size: 44px; text-transform: uppercase; padding: 6px 0; }
