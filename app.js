@@ -121,9 +121,8 @@ if (counter) {
     const total = amount();
     const qty = Number(qtyInput.value);
     amountEl.textContent = total ? `₹${total.toLocaleString('en-IN')}` : 'Price TBA';
-    const params = new URLSearchParams({ pa: UPI_ID, pn: 'ODD GEN', cu: 'INR', tn: `ODD GEN tickets x${qty}` });
-    if (total) params.set('am', String(total));
-    upiLink.href = `upi://pay?${params.toString().replace(/\+/g, '%20')}`;
+    // The UPI ID stays unencoded: some UPI apps misread "%40" in place of "@".
+    upiLink.href = `upi://pay?pa=${UPI_ID}&pn=ODD%20GEN&cu=INR&tn=${encodeURIComponent(`ODD GEN tickets x${qty}`)}${total ? `&am=${total}` : ''}`;
   }
   const setQty = (n) => { qtyInput.value = String(Math.min(10, Math.max(1, n))); updateAmount(); };
   counter.querySelector('[data-step="-1"]').addEventListener('click', () => setQty(Number(qtyInput.value) - 1));
