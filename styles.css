@@ -203,6 +203,8 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .service-title { font-size: 26px; font-weight: 600; }
 .service-desc { font-size: 15px; line-height: 1.5; color: var(--muted); margin-top: 6px; }
 .service-price { text-align: right; font-family: var(--mono); font-size: 13px; color: var(--soft); }
+a.service-price { justify-self: end; display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
+a.service-price:hover { text-decoration: underline; }
 
 /* events */
 .event { min-height: 120px; padding: 16px 0; display: grid; grid-template-columns: 160px 1fr 280px 200px; gap: 32px; align-items: center; border-bottom: 1px solid var(--line); }
@@ -439,6 +441,7 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 
   .service { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
   .service-price { text-align: left; order: -1; }
+  a.service-price { justify-self: start; }
   .service-title { font-size: 21px; }
 
   .event { grid-template-columns: 64px 1fr 48px; gap: 16px; padding: 20px 0; min-height: 0; }
