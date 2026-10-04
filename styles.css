@@ -139,7 +139,7 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 /* songs */
 .platforms { display: flex; gap: 12px; flex-wrap: wrap; }
 .tracks { border-top: 1px solid var(--line); }
-.track { min-height: 92px; padding: 14px 0; display: grid; grid-template-columns: 56px 64px 1fr 180px 80px 230px; align-items: center; gap: 24px; border-bottom: 1px solid var(--line); }
+.track { min-height: 92px; padding: 14px 0; display: grid; grid-template-columns: 64px 1fr 180px 80px 230px; align-items: center; gap: 24px; border-bottom: 1px solid var(--line); }
 .track-n { font-family: var(--mono); font-size: 14px; color: var(--muted); }
 .track-thumb { position: relative; width: 64px; aspect-ratio: 1; border-radius: 6px; overflow: hidden; background: var(--card); border: none; padding: 0; cursor: pointer; }
 .track-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
@@ -181,6 +181,7 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 
 /* artists */
 .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.vault-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
 .artist { display: flex; flex-direction: column; gap: 16px; }
 .artist-photo { height: 380px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: 20px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .artist-name { font-family: var(--display); font-size: 34px; text-transform: uppercase; }
@@ -208,6 +209,12 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .event-city { font-family: var(--mono); font-size: 14px; text-transform: uppercase; color: var(--soft); }
 .event .btn { justify-self: end; height: 52px; font-size: 15px; }
 .event .icon-btn { border: 1.5px solid var(--fg); }
+/* where we've played */
+.played { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+.played-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.played-list li { display: inline-flex; align-items: baseline; gap: 10px; padding: 14px 22px; border: 1px solid var(--line); border-radius: 999px; font-family: var(--display); font-size: 24px; line-height: 1; text-transform: uppercase; }
+.played-list span { font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--accent); }
+.panel .played-list li { font-size: 18px; padding: 10px 16px; }
 /* ticket counter */
 .ticket-counter { margin-top: 48px; padding: 40px; border-radius: 24px; background: var(--card); border-top: 4px solid var(--accent); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 56px; }
 .tc-intro { display: flex; flex-direction: column; gap: 16px; }
@@ -347,9 +354,10 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
 @media (max-width: 1180px) {
   :root { --gutter: 40px; }
   .site-nav { gap: 20px; font-size: 12px; }
-  .track { grid-template-columns: 40px 64px 1fr auto; }
+  .track { grid-template-columns: 64px 1fr auto; }
   .track-kind, .track-year { display: none; }
   .grid-4, .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vault-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .event { grid-template-columns: 120px 1fr auto; }
   .event-city { display: none; }
   .services { grid-template-columns: 1fr; gap: 48px; }
@@ -435,6 +443,9 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .event-title { font-size: 17px; }
   .event .btn { display: none; }
   .event .icon-btn { display: inline-flex; }
+  .played { margin-top: 32px; }
+  .played-list { gap: 8px; }
+  .played-list li { font-size: 18px; padding: 10px 16px; }
   .ticket-counter { grid-template-columns: 1fr; gap: 28px; padding: 24px 20px; border-radius: 18px; margin-top: 28px; }
   .tc-intro h3 { font-size: 40px; }
   .tc-pay { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 16px; }
@@ -448,7 +459,8 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
   .photo-band { grid-template-columns: 1fr; gap: 12px; padding-bottom: 40px; }
   .about-photo { aspect-ratio: 4 / 3; }
 
-  .grid-4.vault-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .vault-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .vault-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
   .vault-card { padding: 14px; gap: 12px; border-radius: 16px; }
   .vault-lock { height: 120px; }
   .vault-title { font-size: 16px; }
