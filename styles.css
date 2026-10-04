@@ -184,6 +184,8 @@ html.intro-hero .hero-foot { animation-delay: 2.55s; }
 .vault-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
 .artist { display: flex; flex-direction: column; gap: 16px; }
 .artist-photo { height: 380px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: 20px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.artist-photo.has-photo { padding: 0; overflow: hidden; }
+.artist-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .artist-name { font-family: var(--display); font-size: 34px; text-transform: uppercase; }
 .artist-role { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-top: 4px; }
 .artist-bio { font-size: 15px; line-height: 1.5; color: var(--muted); }
