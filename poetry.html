@@ -108,7 +108,7 @@
 
   <!-- RIGHT: feed -->
   <div>
-    <div class="feed-head"><span>The notebook</span></div>
+    <div class="feed-head"><span>The notebook</span><span id="count">0 pieces</span></div>
     <div class="feed" id="feed"></div>
   </div>
 </section>
@@ -154,6 +154,7 @@ function render() {
   $('mode-label').style.color = editingId !== null ? 'var(--pink)' : 'var(--muted)';
   $('publish-btn').textContent = editingId !== null ? 'Save changes' : 'Publish to the notebook';
   $('cancel-btn').style.display = editingId !== null ? '' : 'none';
+  $('count').textContent = pieces.length + (pieces.length === 1 ? ' piece' : ' pieces');
   $('feed').innerHTML = pieces.map((p) => `
     <article class="piece">
       <div class="paper-meta"><span>${esc(p.kind)}</span><span>${esc(p.date)}</span></div>
