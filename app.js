@@ -102,10 +102,16 @@ document.querySelectorAll('.notify').forEach((btn) => {
 const counter = document.getElementById('ticket-form');
 if (counter) {
   const UPI_ID = 'drmayurgiri46@okaxis';
+  const IS_ANDROID = /Android/i.test(navigator.userAgent);
+  const UPI_APPS = {
+    gpay: { android: 'com.google.android.apps.nbu.paisa.user', ios: 'gpay://upi/pay?' },
+    phonepe: { android: 'com.phonepe.app', ios: 'phonepe://pay?' },
+    paytm: { android: 'net.one97.paytm', ios: 'paytmmp://pay?' },
+    bhim: { android: 'in.org.npci.upiapp', ios: 'bhim://upi/pay?' },
+  };
   const showSelect = document.getElementById('tk-show');
   const qtyInput = document.getElementById('tk-qty');
   const amountEl = document.getElementById('tk-amount');
-  const upiLink = document.getElementById('tk-upi-link');
   const status = document.getElementById('tk-status');
 
   document.querySelectorAll('.event[data-show]').forEach((ev) => {
@@ -123,8 +129,15 @@ if (counter) {
     amountEl.textContent = total ? `₹${total.toLocaleString('en-IN')}` : 'Price TBA';
     // The UPI ID stays unencoded: some UPI apps misread "%40" in place of "@".
     // Payee name matches the bank account holder, so apps don't flag a name mismatch.
-    const upiUri = `upi://pay?pa=${UPI_ID}&pn=Mayur%20Giri&cu=INR&tn=${encodeURIComponent(`ODD GEN tickets x${qty}`)}${total ? `&am=${total}.00` : ''}`;
-    upiLink.href = upiUri;
+    const params = `pa=${UPI_ID}&pn=Mayur%20Giri&cu=INR&tn=${encodeURIComponent(`ODD GEN tickets x${qty}`)}${total ? `&am=${total}.00` : ''}`;
+    const upiUri = `upi://pay?${params}`;
+    // A bare upi:// link opens whatever app the phone defaults to (often WhatsApp), so each button targets its app:
+    // Android intents name the app's package; iOS uses each app's own URL scheme.
+    document.querySelectorAll('.tc-apps [data-app]').forEach((el) => {
+      const app = UPI_APPS[el.dataset.app];
+      if (!app) { el.href = upiUri; return; }
+      el.href = IS_ANDROID ? `intent://pay?${params}#Intent;scheme=upi;package=${app.android};end` : `${app.ios}${params}`;
+    });
     // Redraw the QR with the amount baked in; the static QR (no amount) stays if the generator didn't load.
     if (window.qrcode) {
       const qr = qrcode(0, 'M');

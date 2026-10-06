@@ -23,7 +23,7 @@ try {
 </script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/logo-full.png">
-<link rel="stylesheet" href="styles.css?v=202610050042">
+<link rel="stylesheet" href="styles.css?v=202610062205">
 </head>
 <body>
 
@@ -444,7 +444,16 @@ try {
           <div class="tc-amount" id="tk-amount"></div>
           <div class="tc-upi">UPI ID <strong id="tk-upi">drmayurgiri46@okaxis</strong> <button type="button" class="tc-copy" id="tk-copy">Copy</button></div>
           <p class="note">Scan with any UPI app (GPay, PhonePe, Paytm) and the amount fills in by itself. The payee name shows as <strong>Mayur Giri</strong>, ODD GEN's executive producer.</p>
-          <a class="btn btn-ghost tc-upi-app" id="tk-upi-link" href="upi://pay?pa=drmayurgiri46@okaxis&amp;pn=ODD%20GEN&amp;cu=INR">Open UPI app</a>
+          <div class="tc-apps">
+            <div class="tc-amount-label">Pay with</div>
+            <div class="tc-apps-row">
+              <a class="tc-app" data-app="gpay" href="#"><img src="assets/pay/gpay.jpg" alt="" width="44" height="44"><span>GPay</span></a>
+              <a class="tc-app" data-app="phonepe" href="#"><img src="assets/pay/phonepe.jpg" alt="" width="44" height="44"><span>PhonePe</span></a>
+              <a class="tc-app" data-app="paytm" href="#"><img src="assets/pay/paytm.jpg" alt="" width="44" height="44"><span>Paytm</span></a>
+              <a class="tc-app" data-app="bhim" href="#"><img src="assets/pay/bhim.jpg" alt="" width="44" height="44"><span>BHIM</span></a>
+            </div>
+            <a class="tc-app-other" data-app="any" href="#">Other UPI app</a>
+          </div>
         </div>
       </div>
 
@@ -546,7 +555,7 @@ try {
   <div class="video-frame"></div>
 </div>
 
-<script src="assets/vendor/qrcode.js?v=202610050042"></script>
-<script src="app.js?v=202610050042"></script>
+<script src="assets/vendor/qrcode.js?v=202610062205"></script>
+<script src="app.js?v=202610062205"></script>
 </body>
 </html>
