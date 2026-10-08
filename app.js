@@ -132,12 +132,41 @@ if (counter) {
       // An <img> (not SVG) so phones offer "Save image" on long-press, for scanning from the gallery.
       const qrImage = qr.createDataURL(8, 32);
       document.getElementById('tk-qr').innerHTML = `<img src="${qrImage}" alt="UPI QR code to pay ${total ? '₹' + total : ''} to ${UPI_ID}">`;
-      const save = document.getElementById('tk-save');
-      save.href = qrImage;
-      save.download = `ODD-GEN-tickets-QR${total ? '-Rs' + total : ''}.gif`;
+      preparePhoneQr(qrImage, `ODD-GEN-tickets-QR${total ? '-Rs' + total : ''}.png`);
       document.getElementById('tk-qr-caption').textContent = total ? `Scan to pay ₹${total.toLocaleString('en-IN')}` : 'Scan to pay';
     }
   }
+  // "Save QR" puts the QR where UPI apps' "upload from gallery" can find it:
+  // iPhone downloads go to Files, so it opens the share sheet instead ("Save Image" adds it to Photos);
+  // Android downloads land in the Download folder, which Gallery and Google Photos show.
+  const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const saveBtn = document.getElementById('tk-save');
+  let qrFile = null;
+  function preparePhoneQr(src, name) {
+    qrFile = null;
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext('2d').drawImage(img, 0, 0);
+      // Made ahead of the tap: iPhone only opens the share sheet straight from a tap, not after waiting on this.
+      canvas.toBlob((blob) => {
+        qrFile = new File([blob], name, { type: 'image/png' });
+        if (saveBtn.href.startsWith('blob:')) URL.revokeObjectURL(saveBtn.href);
+        saveBtn.href = URL.createObjectURL(blob);
+        saveBtn.download = name;
+      }, 'image/png');
+    };
+    img.src = src;
+  }
+  saveBtn.textContent = IS_IOS ? 'Save QR to Photos' : 'Save QR to Gallery';
+  saveBtn.addEventListener('click', (e) => {
+    if (!IS_IOS || !qrFile || !navigator.canShare || !navigator.canShare({ files: [qrFile] })) return; // plain download
+    e.preventDefault();
+    navigator.share({ files: [qrFile], title: 'ODD GEN tickets QR' }).catch(() => {});
+  });
+
   const setQty = (n) => { qtyInput.value = String(Math.min(10, Math.max(1, n))); updateAmount(); };
   counter.querySelector('[data-step="-1"]').addEventListener('click', () => setQty(Number(qtyInput.value) - 1));
   counter.querySelector('[data-step="1"]').addEventListener('click', () => setQty(Number(qtyInput.value) + 1));
