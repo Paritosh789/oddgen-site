@@ -251,13 +251,11 @@ a.service-price:hover { text-decoration: underline; }
 .tc-upi { font-size: 14px; color: var(--soft); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .tc-upi strong { font-family: var(--mono); font-size: 14px; color: var(--fg); }
 .tc-copy { height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--field-line); background: transparent; color: var(--fg); font-size: 12px; font-weight: 600; cursor: pointer; }
-.tc-apps { display: none; flex-direction: column; gap: 10px; width: 100%; }
-@media (hover: none) and (pointer: coarse) { .tc-apps { display: flex; } }
-.tc-apps-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.tc-app { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px; border: 1px solid var(--field-line); border-radius: 14px; font-size: 12px; font-weight: 600; color: var(--fg); }
-.tc-app img { width: 44px; height: 44px; border-radius: 11px; }
-.tc-app:active { background: var(--line); }
-.tc-app-other { font-size: 13px; color: var(--muted); text-decoration: underline; }
+.tc-phone { display: none; flex-direction: column; gap: 10px; align-items: flex-start; width: 100%; }
+@media (hover: none) and (pointer: coarse) { .tc-phone { display: flex; } }
+.tc-phone-steps { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: var(--soft); text-align: left; }
+.tc-save { height: 48px; }
+.tc-qr img { image-rendering: pixelated; }
 .book-strip { margin-top: 48px; padding: 56px 48px; min-height: 320px; border-radius: 20px; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; background: linear-gradient(90deg, rgba(15,14,12,.92) 0%, rgba(15,14,12,.55) 55%, rgba(15,14,12,.2) 100%), url(assets/live-point.jpg) center 30% / cover; }
 .book-strip p { margin: 0; max-width: 520px; font-family: var(--display); font-size: 44px; line-height: 1.05; text-transform: uppercase; }
 
